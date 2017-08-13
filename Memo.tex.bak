@@ -1,11 +1,17 @@
 \documentclass[11pt]{article}
 \title{%
 Group 9 Project Memo\\\large
+<<<<<<< HEAD
 \color{white} blank line\\
 \color{black}
 Tracking Interconnected Facebook Links\\
 with Graph Database Neo4j}
 
+=======
+anyone know how to leave a blank line here??\\
+Tracking Interconnected Facebook Links\\
+with Graph Database Neo4j}
+>>>>>>> e879d1a272a68061fa774fe4117c7d8c7ac57fa3
 \date{Aug 2017}
 \author{Lindiwe, Clifford, Thomas}
 
@@ -47,6 +53,10 @@ Not sure if the data just needs to be displayed or we need to identify and show 
 \item Learn LaTeX basics
 \item Get an understanding of Neo4j and Neo4j Browser
 \item Refresh JSON and XML
+<<<<<<< HEAD
+=======
+\item findout due date, to nail down a project plan
+>>>>>>> e879d1a272a68061fa774fe4117c7d8c7ac57fa3
 \end{itemize}
 
 \subsubsection{Back-end}
@@ -60,7 +70,10 @@ Lindiwe and Thomas to work on data retrieval, display and manipulation,
 \subsection{Design}
 The input should allow data to be entered into the database, as well as to allow graphic manipulation\\
 The output should be a graphic representation of the connections in the network
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e879d1a272a68061fa774fe4117c7d8c7ac57fa3
 Work load may need to be distributed, once we know which part will be the most work.
 \end{document}
