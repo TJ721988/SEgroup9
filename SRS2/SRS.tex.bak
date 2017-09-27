@@ -1,0 +1,171 @@
+\documentclass[11pt]{article}
+\title{%
+Software Requirement Analysis\\\large
+\color{white} blank line\\
+\color{black}
+COMS3\\
+Group 9\\
+Tracking Interconnected Facebook Links\\
+Using Graph Database Neo4j}
+\date{Aug 2017}
+\author{Lindiwe, Clifford, Thomas}
+
+\usepackage[margin=1.5in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+\newpage
+\pagenumbering{arabic}
+\section{Introduction}
+\subsection{Purpose}
+Social media plays a vital role in everyday people lives. There is enormous information about individuals and how they relate to one another. This information is useful to individuals, advertisers, politicians and many other organisations. The purpose of our software is to provide means to get links between individuals in social media. Our first focus will be analysing Twitter links using Neo4j database via the website.
+
+\subsection{Scope}
+\begin{itemize}
+\item	Create a database using Neo4j to store our social media data (Clifford)
+\item Find out about the legal implications of using Twitterdata (Lindiwe)
+\item Register with Twitter to enable them to give us access to their data (Lindiwe)
+\item Create a beautiful easy to use web interface (Thomas/Lindiwe)
+\item Testing of the software (Clifford/Thomas/Lindiwe)
+\end{itemize}
+
+\subsubsection{Definitions}
+\begin{itemize}
+\item SDLC: Software Development Life Cycle
+\item UC: use case
+\item GD: graph database(Neo4j)
+\end{itemize}
+
+\section{Overall Description}
+\subsection{Product Perspective }
+Since this is the first software we are producing, there no other programs to interface with. With this program you will be able to understand your interaction in the Twitter world, to analyse behaviour of tweeters
+The program will be expected to deliver on the following:
+\begin{itemize}
+\item Show all people using twitter
+\item Show all tweets of each person
+\item show retweets, distinguish between followers and non followers
+\item show replies/mentions
+\end{itemize}
+
+\subsection{product functions}
+\begin{itemize}
+\item This programwill be designed in Client-Server model
+\item The front end will  be through the Neo4j browser and the back end will be done in Neo4j
+\item Using Python to handle the data import from twitter to Neo4j
+\item The program is expected to have a fast response 
+\item The program is expected to do at least three different data analysis
+\end{itemize}
+
+\subsection{User characteristics}
+\begin{itemize}
+\item The user will have to be willing to share their Twitter activity with our program(this was a concern for Facebook data)
+\item Twitter is more public than Facebook, the import copies all publicly available data
+\item The program should be able to handle at least five users without affecting the user experience
+\end{itemize}
+
+\subsection{General Constraint}
+Obtaining permission from Facebook to use their data, else acquire similar data from another source, otherwise switching to use twitter data.
+
+\subsection{Assumptions and dependencies}
+\begin{itemize}
+\item Facebook will grant us access to their data
+\item There will be a server where we can run the program
+\end{itemize}
+
+\section{Detailed Requirements}
+\subsection{External Interface Requirements}
+\subsubsection{User Interfaces (Thomas)}
+The Neo4j browser offers easy to use manipulation tools and a nice graphic visualisation, it's the best choice among many similar tools due the compatibility with the Neo4j database.
+\subsubsection{Hardware Interfaces (Clifford)}
+The only Hardware interface that will be required for this project is the computer that will be used to program and save the database for this project
+\subsubsection{Software Interfaces (Clifford)}
+Neo4j will be used as the database for this project and the browser afforded by Neo4j will be the first choice if feasible as the user interface. At the moment Java or Python are the front runners to be used for the back-end programming. Java because Neo4j supports native Java and Python because many data science libraries are written in Python
+
+\subsection{Function Requirements}
+\subsubsection{Back-end requirements}
+UC1: Show people as big nodes
+
+
+UC2: Bridge all tweets to their creators
+\begin{itemize}
+\item Primary actor: The tweeter
+\item Track the time of the actions, to compare to given period
+\end{itemize}
+
+UC3: Bridge all retweets of a comment
+\begin{itemize}
+\item Primary actor: The retweeter
+\item Secondary actor: The original tweeter
+\item Track the time of the actions, to compare to given period
+\item Check if the retweeter is a follower of the original tweeter
+\end{itemize}
+
+UC4: Replies and Mentions
+\begin{itemize}
+\item Primary actor: The tweeter
+\item Secondary actor: tweet/person mentioned/replied to
+\end{itemize}
+
+\subsubsection{Front-end requirements}
+Represent different actions by different connects between nodes
+
+UC1: People
+Biggest nodes to show people(green)
+
+UC2: Tweets
+Smaller nodes(red) bridges(brown) to people
+
+UC3: Retweets
+Nodes(purple) for a retweet, bridge(pink) to the tweet, bridge(blue) to retweeter, and same colour bridge to original tweeter, if the retweeter is a follower
+
+UC4: Mentions
+Little nodes(light blue), bridges(light blue) to tweet/person mentions/replied to
+
+\subsection{Performance Requirements}
+\subsubsection{Intuitiveness}
+The database and representation should be as logical as possible, and as easy to use, maintain and modify as manageable. 
+A simple design will decrease database queries to improve response time
+
+\subsubsection{Speed}
+The speed of execution is important. Neo4j is faster than MySql Relational Database Management System. Expected response time of 15 seconds 90\% of the time.
+
+\subsubsection{Agility}
+The system is to be naturally adaptive, with the flexibility to add and remove data from the database
+
+\subsection{Software System Attributes}
+\subsubsection{Reliability}
+\begin{itemize}
+\item Elimination of duplicated data
+\item Ease of use
+\item Consistency
+\end{itemize}
+
+\subsubsection{Security}
+\usepackage{soul}
+\st{As the data is personal it should be secured, so no other can view it, and anonymised.}
+Twitter data is publicly av
+
+
+\subsubsection{Maintainability}
+Maintenance should be possible and easy and allow for the implementation of new functions
+
+\subsection{Design Constraints}
+\subsubsection{Hardware}
+Our software uses Neo4j database,Neo4j’s storage is organized in record-based files per data structure – nodes, relationships, properties, labels, and so on. Each node and relationship record block is directly addressable by its id.Nodes occupy 15B
+of space, relationships occupy 31B of space and properties occupy 41B of space.The low level cache requirements are the same as for the disk space.The
+system  will  be  integrated  with  a  website.  To  use  recommendation  system,user 
+should enter from a personal computer,mobile device with internet connection.
+
+\subsubsection{User direct interaction constraints}
+This project is expected to use the graph database to
+manage large samples of database from Facebook of nodes (members) and links (connections
+between nodes.The softwaare will be pretty static software,preventing users from enacting personalized websites layout.It will only use the data from facebook.This does not allow much room for creative customizability of a user's profile.
+\end{document}
