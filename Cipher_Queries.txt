@@ -1,0 +1,8 @@
+MATCH (n:Tweet{sentiment:"positive"}) - [r:Generated_By] -> (t:Topic{name:"Trump"}) return n, r,t
+MATCH (n) return n
+MATCH (n:Tweet{sentiment:"negative"}) - [r:Generated_By] -> (t:Topic{name:"Trump"}) return count(n)
+MATCH (t:Tweet{subjective:"opinion"})-[r:Created_By]->(p:Person) return t,r,p
+MATCH (re:Person)-[r:replied_to]->(p:Reply_Tweet) return re,r,p
+MATCH (p:Person)-[r:Followed_by]->(fol:Person) where p.followers_count>20000 return p,fol,r
+MATCH (p:Person)-[r:Followed_by]->(fol:Person) where p.followers_count>20000 return p,fol,r
+MATCH (p:Person)-[r:Followed_by]->(fol:Person) where 
