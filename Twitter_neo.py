@@ -18,12 +18,12 @@ access_token_secret="6yRzJjCjxlN3hwlouwnHvyyONnYzYGkir0yfKgWkP3fBm"
 authenticate("localhost:7474", "neo4j", "neo")
 #creating graphs were we can add node note: topic is the twitter topic we are searching for
 graph = Graph()
-topic = "car"
-#topic_string = '"Trump"'
+topic = "Trump"
+topic_string = '"Trump"'
 topic_tweet = Node("Topic",name=topic)
-graph.create(topic_tweet)
-#graph.merge(topic_tweet)
-#topic_tweet = graph.evaluate('match(x:Topic{name:'+ topic_string+'}) return x')
+#graph.create(topic_tweet)
+graph.merge(topic_tweet)
+topic_tweet = graph.evaluate('match(x:Topic{name:'+ topic_string+'}) return x')
 
 #this function takes in json data from tweeter and store them in neo4j
 def getVariables(data):
@@ -40,6 +40,10 @@ def getVariables(data):
     tweet = python_obj["text"]
     in_reply_to_screen_name = python_obj["in_reply_to_screen_name"]
     in_reply_to_user_id_str = python_obj["in_reply_to_user_id_str"]
+    in_reply_to_status_id_str = python_obj["in_reply_to_status_id_str"]
+    #print(in_reply_to_status_id_str)
+
+
     name = python_obj["user"]["name"]
     screen_name = python_obj["user"]["screen_name"]
     #user_M_Name = python_obj["Entities"]["user_mentions"]["name"]
@@ -65,11 +69,10 @@ def getVariables(data):
     subjectivity =analysis.sentiment.subjectivity
     sentiment=""
     subjective =""
-    if (polarity<=-0.4):
+    if (polarity<=0):
         sentiment ="negative"
-    elif (polarity>-0.4 and polarity<=0.4):
-        sentiment="neutral"
-    elif (polarity > 0.4):
+
+    elif (polarity > 0):
         sentiment = "positive"
     if (subjectivity<=0):
         subjective ="opinion"
@@ -84,9 +87,21 @@ def getVariables(data):
     tweet = Node("Tweet",name=twitterId , created_at= created_at,tweet=tweet,reply_user=in_reply_to_screen_name, reply_tweet_id = in_reply_to_user_id_str, sentiment= sentiment,subjective=subjective)
     graph.create(tweet)
 
+
     #here we are creating relationships for tweet and person
-    graph.create(Relationship(tweet, "Created_By", person))
-    graph.create(Relationship(tweet, "Generated_By", topic_tweet))
+    Created_By = Relationship(tweet, "Created_By", person)
+    Created_By.properties["name"] ="Created_By"
+    graph.create(Created_By)
+
+    if (in_reply_to_status_id_str!=None):
+        reply = Node("Reply_Tweet", id =  in_reply_to_status_id_str, screen_name =  in_reply_to_screen_name)
+        graph.create(reply)
+        replied_to = Relationship(person, "replied_to", reply)
+        replied_to.properties["name"] = "replied_to"
+        graph.create(replied_to)
+    Generated_By =Relationship(tweet, "Generated_By", topic_tweet)
+    Generated_By.properties["name"] = "Generated_By"
+    graph.create(Generated_By)
     api = tweepy.API(auth)
     user = api.get_user(user_id)
 
@@ -95,14 +110,18 @@ def getVariables(data):
         friendo = Node("Person", name=friend.name, screen_name=friend.screen_name, location=friend.location, followers_count=friend.followers_count,
         friends_count=friend.friends_count)
         graph.create(friendo)
-        graph.create(Relationship(person, "is_a_friend", friendo))
+        is_a_friend =Relationship(person, "is_a_friend", friendo)
+        is_a_friend.properties["name"] = "is_a_friend"
+        graph.create(is_a_friend)
 
     #here we are creating followers links
     for followers in user.followers():
         follower = Node("Person", name=followers.name, screen_name=followers.screen_name, location=followers.location, followers_count=followers.followers_count,
         friends_count=followers.friends_count)
         graph.create(follower)
-        graph.create(Relationship(person, "Followed_by", follower))
+        Followed_by = Relationship(person, "Followed_by", follower)
+        Followed_by.properties["name"] = "Followed_by"
+        graph.create(Followed_by)
 
     print("done")
 
