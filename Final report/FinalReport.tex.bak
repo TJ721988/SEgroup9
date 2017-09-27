@@ -1,0 +1,36 @@
+\documentclass[11pt]{article}
+\title{%
+Meeting memo\\\large
+\color{white} blank line\\
+\color{black}
+COMS3\\
+Group 9\\
+Tracking Interconnected Facebook Links\\
+Using Graph Database Neo4j}
+\date{26 September 2017}
+\author{Lindiwe, Clifford, Thomas}
+
+\usepackage[margin=1.5in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+\newpage
+\pagenumbering{arabic}
+\section{Introduction}
+\subsection{Overview}
+Short description on who worked on the project and a few lines about the idea of the project
+\subsection{Description}
+detailed description of the project
+\subsection{requirements}
+List of what is need to run the code
+\subsection{Running the code}
+description of how to run the code from fresh using the details on GitHub,
+\end{document}
