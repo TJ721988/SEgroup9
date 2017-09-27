@@ -1,0 +1,77 @@
+\documentclass[11pt]{article}
+\title{%
+Meeting memo\\\large
+\color{white} blank line\\
+\color{black}
+COMS3\\
+Group 9\\
+Tracking Interconnected Facebook Links\\
+Using Graph Database Neo4j}
+\date{26 September 2017}
+\author{Lindiwe, Clifford, Thomas}
+
+\usepackage[margin=1.5in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+\newpage
+\pagenumbering{arabic}
+\section{Meeting Summary}
+\subsection{Key Points}
+\begin{itemize}
+\item Clifford update on backend progress
+\item Changes
+\begin{itemize}
+\item Using Twitter data
+\item Using Python to show graphs
+\end{itemize}
+\item TODO before next meeting
+\begin{itemize}
+\item Update Python script (C)
+\item Find out details about submission (L)
+\item Test Python and Neo4j code (L, T)
+\item Create meeting write-up (T)
+\end{itemize}
+\end{itemize}
+
+\section{Greater Meeting Details}
+\subsection{Backend}
+Due to difficulties in acquiring the Facebook data, we decided to use Twitter data instead. 
+The Cypher queries need to be changed due to change of data, but the general structure remains similar.
+
+\subsection{Frontend}
+The switch from Facebook to Twitter data allows us to use the Tweepy tool for python, which greatly reduces the workload, and is the motivation to move from displaying in the Neo4j Brower to Python instead.
+Twitter data has the advantage over Facebook data that a graph has a better overview and a better structure. 
+\subsubsection{Design}
+\begin{itemize}
+\item Central Node for a person (Green)
+\item Node per tweet (Red)
+\item Node per retweet (Purple)
+\item Node per mention (Blue)
+\end{itemize}
+
+The initial step would be to set up a user, Big green central node.
+Each tweet this person makes is shown as a smaller red node, bridged(brown) to the person.
+Should a tweet be retweeted, a purple retweet node is created. Bridge to original tweeter and to retweeter(blue) and a bridge(red/pink) to the original tweet.
+Finally mentions of other people/tweets and replies are shown as little blue nodes, bridging the tweeter and person/tweet they mention/reply to. 
+
+After thought, the bridge from a retweet to the original tweeter should perhaps only show if the retweeter is a follower, or perhaps show in a different colour.
+
+\section{Next Meeting}
+Next meeting to be held on Thursday 28/09/2017 at 10:00 in the labs. 
+\begin{itemize}
+\item First item of business is to finalise if python will work visually or if Neo4j Browser will be used. 
+\item Next discuss the testing of the current code, and possible changes going forwards. 
+\item Create a TODO list of what need to be done urgently.
+\item Look at skeleton code for final report, add list of ideas/concepts/design for the final document.
+\end{itemize}
+	
+\end{document}
