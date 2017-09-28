@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\title{%
+Sprint Retrospective\\\large
+\color{white} blank line\\
+\color{black}
+COMS3\\
+Group 9\\
+Tracking Interconnected Facebook Links\\
+Using Graph Database Neo4j}
+\date{28 September 2017}
+\author{Lindiwe, Clifford, Thomas}
+
+\usepackage[margin=1.5in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+\newpage
+\pagenumbering{arabic}
+\section{Meeting Summary}
+\subsection{Key Points}
+\begin{itemize}
+\item Fully set up everyone with all programs to run code 
+\item discussed ideas/changes to for final report
+\item 
+\end{itemize}
+
+\section{Greater Meeting Details}
+\subsection{Backend}
+Back end is working as desired. Some minor changes need to be made(displaying T for tweet instead of tweet id).
+Clifford plans to write a script to automate the process for an easier user interface/set up.
+
+\subsection{Frontend}
+Due to the front end code in the browser being saved locally we need to properly document the various cypher queries and attach them to screen shots for the final documentation, to show the intended design. 
+Alternately organise a server to host the Neo4j library and browser queries.
+
+\subsubsection{Design}
+New ideas brought up
+\begin{itemize}
+\item Location of tweet (inconsistent and not always enabled)
+\item Tweet sentiment - comparing positive to negative words used
+\item Search phrase - filter tweets to contain searched phrase
+\end{itemize}
+
+Haven't yet implemented the final look, but made progress in that direction and discussed changes
+
+\subsubsection{Documentation}
+Skeleton of final report to be expanded by everyone with a good idea, esp focused on including graphics or models to visually repres
+
+\section{Next Meeting}
+Next meeting to be held on Saturday at noon, in the Labs. 
+\begin{itemize}
+\item Ideally everything should be done, or close to completion
+\item Check all documentation for spelling and grammar mistakes
+\item Go over final report and critically discuss everything
+\item Discuss changes made since last meeting, front end design, back end automation, should progress have been made
+\item Make a list of all programs/packages and scripts used and relevant versions and installation details, for someone to set up from scratch
+\end{itemize}
+	
+\end{document}
