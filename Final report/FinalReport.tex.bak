@@ -1,13 +1,13 @@
 \documentclass[11pt]{article}
 \title{%
-Meeting memo\\\large
+Skeleton of final report\\\large
 \color{white} blank line\\
 \color{black}
 COMS3\\
 Group 9\\
-Tracking Interconnected Facebook Links\\
+Tracking Interconnected Twitter Links\\
 Using Graph Database Neo4j}
-\date{26 September 2017}
+\date{2017}
 \author{Lindiwe, Clifford, Thomas}
 
 \usepackage[margin=1.5in]{geometry}
@@ -26,11 +26,42 @@ Using Graph Database Neo4j}
 \pagenumbering{arabic}
 \section{Introduction}
 \subsection{Overview}
-Short description on who worked on the project and a few lines about the idea of the project
-\subsection{Description}
-detailed description of the project
+This purpose of this project is to graph Twitter data so that hidden trends and patterns may be revealed.
+\subsection{Neo4j}
+Neo4j is a relatively new database management system, that distinguishes itself from other systems through its ease of use and its speed. Its was initially launched in 2010, however the stable release was only in June 2017. Its fundamental design is to store data as nodes, edges and attributes. Nodes are connected by edges, both can have any number of attributes.
 \subsection{requirements}
-List of what is need to run the code
+Neo4j
+Python
+PyCharm
+TextBlob
+Tweepy
+py2neo
 \subsection{Running the code}
-description of how to run the code from fresh using the details on GitHub,
+The specifics of running the code as desired can be found under GitHub in the ReadMe document
+\section{Description}
+
+We import public data from twitter and store it in a Neo4j database. This database is graphically represented through the Neo4j Browser, which shows nodes and connections, in different colours and sizes to highlight and differentiate various things. Filters can be applied to customise or limit what the graph shows. For example only tweets with a certain phrase or hashtag, "\#neo4j", can be shown. This can give an idea about the age, location or gender of people tweeting about Neo4j.
+
+\subsection{Design}
+
+Figure 1 shows a demo of the final look. Big green nodes are people on twitter, labelled by their twitter handle, they share an edge labelled "tweeted" to red nodes, labelled "T" with anything they tweet. Should anyone retweet this tweet, then a "RT" node is created in purple, sharing "retweeted" edges with the original tweet and the retweter. Another edge is created from the retweeter to the original tweeter if they are a follower.
+
+Figure 2 shows the data process, from Twitter to the final front-end interface. 
+
+Figure 3 shows the basic idea behind the set up of the database.
+
+\subsection{Back-end}
+simple description on what the back-end does and why
+\subsection{application}
+A tool like this has many applications, certain tweet patters could signal to an account being bot operated, it can be used to find out what a certain age, race, gender, location are tweeting about a certain topic. The first application that pops to mind is targeted advertising, but many more exist.
+
+\subsection{looking forward}
+The first improvement we would like to make would be to host the Neo4j database on a server, so that visual designs and templates can be stored for a uniform look. The next would be a script, either through a website or a program to automate the initial set up in Python and pyCharm, so that the user just needs to select his preferences or enter a topic into a search field and the script does the rest and displays the results in the browser.
+
+\section{Members}
+who did what
+
+
+
+
 \end{document}
