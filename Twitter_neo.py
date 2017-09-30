@@ -18,8 +18,13 @@ access_token_secret="6yRzJjCjxlN3hwlouwnHvyyONnYzYGkir0yfKgWkP3fBm"
 authenticate("localhost:7474", "neo4j", "neo")
 #creating graphs were we can add node note: topic is the twitter topic we are searching for
 graph = Graph()
-topic = "Trump"
-topic_string = '"Trump"'
+file = open("newfile.txt","r")
+
+for line in file:
+    var = line
+
+topic = var
+topic_string = '"' +var+'" '
 topic_tweet = Node("Topic",name=topic)
 #graph.create(topic_tweet)
 graph.merge(topic_tweet)
@@ -84,7 +89,7 @@ def getVariables(data):
     #here we are creating person none for everytweet
     person = Node("Person", name=name,screen_name=screen_name,location=location,followers_count=followers_count,friends_count=friends_count,user_created_at=user_created_at)
     graph.create(person)
-    tweet = Node("Tweet",name=twitterId , created_at= created_at,tweet=tweet,reply_user=in_reply_to_screen_name, reply_tweet_id = in_reply_to_user_id_str, sentiment= sentiment,subjective=subjective)
+    tweet = Node("Tweet",name="T" , created_at= created_at,tweet=tweet,reply_user=in_reply_to_screen_name, reply_tweet_id = in_reply_to_user_id_str, sentiment= sentiment,subjective=subjective)
     graph.create(tweet)
 
 
@@ -94,7 +99,7 @@ def getVariables(data):
     graph.create(Created_By)
 
     if (in_reply_to_status_id_str!=None):
-        reply = Node("Reply_Tweet", id =  in_reply_to_status_id_str, screen_name =  in_reply_to_screen_name)
+        reply = Node("Reply_Tweet", name="RT", id =  in_reply_to_status_id_str, screen_name =  in_reply_to_screen_name)
         graph.create(reply)
         replied_to = Relationship(person, "replied_to", reply)
         replied_to.properties["name"] = "replied_to"
