@@ -5,8 +5,8 @@
 \contentsline {subsection}{\numberline {1.4}Running the code}{1}{subsection.1.4}
 \contentsline {section}{\numberline {2}Description}{1}{section.2}
 \contentsline {subsection}{\numberline {2.1}Design}{2}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Back-end}{4}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Front-end}{4}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}application}{4}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}looking forward}{5}{subsection.2.5}
-\contentsline {section}{\numberline {3}Members}{5}{section.3}
+\contentsline {subsection}{\numberline {2.2}Back-end}{6}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Front-end}{6}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}application}{6}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}looking forward}{7}{subsection.2.5}
+\contentsline {section}{\numberline {3}Members}{7}{section.3}
