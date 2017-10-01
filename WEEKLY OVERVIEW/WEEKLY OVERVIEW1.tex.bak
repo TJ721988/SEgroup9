@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+
+
+\begin{document}
+		\begin{titlepage}
+		\begin{center}
+		
+		\huge\bfseries{PROJECT WEEKLY OVERVIEW}\\
+	    \textsc{\Large SOFTWARE ENGINEERING GROUP 9 - PROJECT 5}\\
+	    
+	    \textsc{\Large 2017/09/28}\\
+	    \end{center}
+\end{titlepage}	
+
+	
+					\underline{\textbf{WEEK 1}}\\
+
+
+  
+-Learning and understanding git, GitHub and latex basics (collaborative writing and publishing tool)\\
+-Selection of group members.\\
+-Completing lab1.\\
+-Creation of Whatsapp group (most meetings took place on the WhatsApp messaging app.)\\
+  \\
+  \\
+  \\
+						\underline{\textbf{WEEK2}}\\
+
+
+Understanding basic and advanced Neoj4 graph database:\\
+     -Online tutorials\\
+     -knowledge of databases,graph theory and spring theory.\\
+     -Learning Cyper query language (Neo4j's declarative query language).\\
+     -Neo4j's built in web application.\\
+     \\
+     \\
+     \\
+						\underline{\textbf{WEEK3}}\\
+						
+						
+Generating of first draft(using Facebook data) and second draft(using twitter data) software requirements specification (SRS) document.\\
+-We had a virtual meeting on WhatsApp Messenger app.\\
+-Each group member sent their piece of work to the group leader via email for him to draw up final draft from each group member's contribution.It was then pushed to GitHub by the group leader.\\
+-Completing lab 2.\\
+
+
+\textbf{Requirements specification :}
+-User Interface (Thomas)\\
+-Hardware Interface (Clifford).\\
+-Software Interface (Clifford).\\
+-Performance requirements (Lindiwe)\\
+-Design constraints (Lindiwe)\\
+-Attributes, security, maintainability, Reliability(Lindiwe)\\
+\\
+\\
+\\
+					\underline{	\textbf{WEEK4}}\\
+						
+-We had a virtual meeting on WhatsApp Messenger app discussing the progress of the project.\\
+-Applying for dedicated self managed server (Afrihost) proved costly and time consuming,with costs approximately R1000 a month.\\
+-It came to our attention that to get access to Facebook data would take approximately a week since we had to apply to get it.\\
+-As a solution,we reached a consensus on using twitter data over the Facebook one.\\
+-We then updated our SRS document.\\
+-After a series of meetings which were subsequently held on a Whatsapp Messnger app ,with every group member present.We had a face to face meeting.Refer to meeting Memo documents for more information.\\
+-On the same week we had another face to face meeting ,refer to Meeting Memo Documents for more information. \\
+-Documents were drawn up after every(physical) meeting we had and pushed to GitHub by the group leader. 
+
+
+
+-
+												
+     
+
+		         
+
+
+		
+
+
+ \end{document}
