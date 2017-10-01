@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.8.12)  1 OCT 2017 11:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.8.12)  1 OCT 2017 23:45
 entering extended mode
 **./FinalReport.tex
 (FinalReport.tex
@@ -183,25 +183,25 @@ File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
 \Gin@req@height=\dimen115
 \Gin@req@width=\dimen116
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 21.
+Package hyperref Info: Option `colorlinks' set `true' on input line 19.
 
 (FinalReport.aux)
 \openout1 = `FinalReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -246,7 +246,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 )
-Package hyperref Info: Link coloring ON on input line 23.
+Package hyperref Info: Link coloring ON on input line 21.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -256,9 +256,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count101
 )
-LaTeX Info: Redefining \ref on input line 23.
-LaTeX Info: Redefining \pageref on input line 23.
-LaTeX Info: Redefining \nameref on input line 23.
+LaTeX Info: Redefining \ref on input line 21.
+LaTeX Info: Redefining \pageref on input line 21.
+LaTeX Info: Redefining \nameref on input line 21.
 
 (FinalReport.out) (FinalReport.out)
 \@outlinefile=\write3
@@ -292,11 +292,11 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 25.
+(Font)              <12> on input line 23.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 25.
+(Font)              <8> on input line 23.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 25.
+(Font)              <6> on input line 23.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (FinalReport.toc
@@ -306,23 +306,27 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write4
 \openout4 = `FinalReport.toc'.
 
+ (FinalReport.lof)
+\tf@lof=\write5
+\openout5 = `FinalReport.lof'.
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.28 \newpage
+l.27 \newpage
               [2]
-Underfull \hbox (badness 10000) in paragraph at lines 36--45
+Underfull \hbox (badness 10000) in paragraph at lines 35--44
 
  []
 
-<Neo2.png, id=80, 1445.4pt x 765.6103pt>
+[1] <Neo2.png, id=99, 1445.4pt x 765.6103pt>
 File: Neo2.png Graphic file (type png)
  <use Neo2.png>
 Package pdftex.def Info: Neo2.png used on input line 57.
 (pdftex.def)             Requested size: 397.485pt x 210.53764pt.
 
-<Flow.png, id=82, 613.29124pt x 763.85374pt>
+<Flow.png, id=101, 613.29124pt x 763.85374pt>
 File: Flow.png Graphic file (type png)
  <use Flow.png>
 Package pdftex.def Info: Flow.png used on input line 65.
@@ -337,7 +341,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--66
 
  []
 
-<Graph.png, id=83, 543.02875pt x 759.83875pt>
+<Graph.png, id=102, 543.02875pt x 759.83875pt>
 File: Graph.png Graphic file (type png)
  <use Graph.png>
 Package pdftex.def Info: Graph.png used on input line 73.
@@ -347,7 +351,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--74
 
  []
 
-<JSON.png, id=84, 773.89125pt x 512.91624pt>
+<JSON.png, id=103, 773.89125pt x 512.91624pt>
 File: JSON.png Graphic file (type png)
  <use JSON.png>
 Package pdftex.def Info: JSON.png used on input line 82.
@@ -362,7 +366,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 81--83
 
  []
 
-[1] [2 <./Neo2.png>] [3 <./Flow.png>] [4 <./Graph.png>] [5 <./JSON.png>]
+[2 <./Neo2.png>] [3 <./Flow.png>] [4 <./Graph.png>] [5 <./JSON.png>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 94.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
@@ -371,29 +375,59 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 94.
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--103
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
-[6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--105
+
+ []
+
+<User.png, id=125, 947.79094pt x 468.24937pt>
+File: User.png Graphic file (type png)
+ <use User.png>
+Package pdftex.def Info: User.png used on input line 112.
+(pdftex.def)             Requested size: 397.485pt x 196.37044pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--117
+
+ []
+
+<Positive.png, id=126, 1441.63594pt x 727.21687pt>
+File: Positive.png Graphic file (type png)
+ <use Positive.png>
+Package pdftex.def Info: Positive.png used on input line 120.
+(pdftex.def)             Requested size: 426.79134pt x 215.28166pt.
+
+Overfull \hbox (29.30634pt too wide) in paragraph at lines 120--121
+[][] 
+ []
+
+[6] [7 <./User.png>] [8 <./Positive.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 145.
+ [9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 145.
  (FinalReport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 145.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 145.
 Package rerunfilecheck Info: File `FinalReport.out' has not changed.
-(rerunfilecheck)             Checksum: 3ECCEE95D14C40F3C68BBEB108A61F6C;681.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
+(rerunfilecheck)             Checksum: 7223ADB99B190780A1C3CAE5D5C01DB2;681.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 145.
  ) 
 Here is how much of TeX's memory you used:
- 5637 strings out of 493323
- 83455 string characters out of 3139057
- 178167 words of memory out of 3000000
- 9115 multiletter control sequences out of 15000+200000
+ 5658 strings out of 493323
+ 83699 string characters out of 3139057
+ 179258 words of memory out of 3000000
+ 9126 multiletter control sequences out of 15000+200000
  8979 words of font info for 32 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,6n,32p,611b,410s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,7n,32p,760b,420s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
@@ -402,9 +436,9 @@ nts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmtt10.pfb>
-Output written on FinalReport.pdf (9 pages, 422127 bytes).
+Output written on FinalReport.pdf (11 pages, 571585 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 26 named destinations out of 1000 (max. 500000)
- 117 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 181 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 127 words of extra memory for PDF output out of 10000 (max. 10000000)
 
