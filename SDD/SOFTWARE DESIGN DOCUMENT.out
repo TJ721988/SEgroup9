@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Purpose of this Software Design Document}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Description of the software}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Reference Material}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{SYSTEM OVERVIEW}{}% 5
+\BOOKMARK [1][-]{section.3}{SYSTEM ARCHITECTURE}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{System Architectural Design}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{DATA DESIGN}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Database design\(Neo4j\)}{section.4}% 9
+\BOOKMARK [1][-]{section.5}{USER INTERFACE DESIGN}{}% 10
+\BOOKMARK [2][-]{subsection.5.1}{Overview of User Interface}{section.5}% 11
+\BOOKMARK [1][-]{section.6}{SOFTWARE APPLICATION}{}% 12
+\BOOKMARK [1][-]{section.7}{ BIBLIOGRAPHY}{}% 13
