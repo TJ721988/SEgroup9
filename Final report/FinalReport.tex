@@ -3,9 +3,10 @@
 Tracking Interconnected Twitter Links\\\large
 \color{white} blank line\\
 \color{black}
-Using Graph Database Neo4j}
+Using Graph Database Neo4j\\
+Group 9}
 \date{2017}
-\author{Lindiwe Mncwabe - 1118055\\Clifford Ralikhwatha - 0412610\\Thomas Johannsen - 721988}
+\author{Lindiwe Mncwabe - 1118055\\\\Clifford Ralikhwatha - 0412610\\\\Thomas Johannsen - 721988\\\\\\\\}
 
 \usepackage[margin=1.5in]{geometry}
 \usepackage{hyperref}
@@ -89,7 +90,8 @@ Additionally the graph shows a lot less information at the first glance, data no
 The JSON for "Wonderfulvideo2" isn't shown, as it is very similar to that of "FightinFourteen", which in contained in the second set of bracket{}.
 Details such as friends, followers and time aren't shown on the graph, but hovering over an element, or selecting it, will reveal these and other properties.
 \newline
-We discussed including the location of where the tweet was made, however this is problematic for several reasons
+\newline
+\textbf{Location:} We discussed including the location of where the tweet was made, however this is problematic for several reasons
 \begin{itemize}
 \item Not all users share their location with twitter
 \item Location isn't always accurate
@@ -97,11 +99,11 @@ We discussed including the location of where the tweet was made, however this is
 \end{itemize}
 In the end we left the location as a property of the nodes, which means it can be used as a filter. However further analysis of the location into a uniformed method would have to be applied for this information to be fully utilised.\newline
 
-Using a text analysis tool (TextBlob) we can look at the content of a tweet to see whether it's an opinion. We can also look at the sentiment of the content to determine whether a tweet is positive or negative. These are stored as properties which again can be used as filters, showing only tweets that are positive opinions, or no opinions at all...
+\textbf{Text analysis:} Using a text analysis tool (TextBlob) we can look at the content of a tweet to see whether it's an opinion. We can also look at the sentiment of the content to determine whether a tweet is positive or negative. These are stored as properties which again can be used as filters, showing only tweets that are positive opinions, or no opinions at all...
 
 \subsection{Back-end}
 The back-end of the project imports data from Twitter to python as a JSON stream. The JSON is then analysed and converted to Neo4j data. In the process Nodes and edges are created and properties are assigned. External analysis such as sentiment are done before the conversion to Neo4j, and passed along as properties.
-We don't have a server to host the Neo4j data, which means that when a different machine runs the code they will collect separate data from twitter, based on what is trending at the time. This can result in differences based on when and how often Twitter data is collected, however by using a topic like "trump" we hope to always have a fair amount of hits.\newline
+We don't have a server to host the Neo4j data, which means that when a different machine runs the code they will collect separate data from twitter, based on what is trending at the time. This can result in differences based on when and how often Twitter data is collected, however by using a topic like "trump" we hope to always have a fair amount of hits, from a broad representation of age, gender, race and opinions.\newline
 
 
 
