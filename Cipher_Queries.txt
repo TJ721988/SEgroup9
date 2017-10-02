@@ -1,8 +1,21 @@
-MATCH (n:Tweet{sentiment:"positive"}) - [r:Generated_By] -> (t:Topic{name:"Trump"}) return n, r,t
+increase displayed nodes from 300 to 1000:
+:config initialNodeDisplay: 1000
+
+show all nodes:
 MATCH (n) return n
+
+show positive tweets:
+MATCH (n:Tweet{sentiment:"positive"}) - [r:Generated_By] -> (t:Topic{name:"Trump"}) return n, r,t
+
+show nagative tweets:
 MATCH (n:Tweet{sentiment:"negative"}) - [r:Generated_By] -> (t:Topic{name:"Trump"}) return count(n)
+
+show tweets considered opinions:
 MATCH (t:Tweet{subjective:"opinion"})-[r:Created_By]->(p:Person) return t,r,p
+
+show replies:
 MATCH (re:Person)-[r:replied_to]->(p:Reply_Tweet) return re,r,p
+
+show people with > 20000 followers:
 MATCH (p:Person)-[r:Followed_by]->(fol:Person) where p.followers_count>20000 return p,fol,r
-MATCH (p:Person)-[r:Followed_by]->(fol:Person) where p.followers_count>20000 return p,fol,r
-MATCH (p:Person)-[r:Followed_by]->(fol:Person) where 
+
