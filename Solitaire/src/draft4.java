@@ -1,24 +1,53 @@
-public class draft2 
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.*;
+
+public class draft4
 {
-	static int World[][] = {{0,0,1,1,1,0,0},{0,0,1,1,1,0,0},{1,1,1,1,1,1,1},{1,1,1,1,1,1,1},{1,1,1,1,1,1,1},{0,0,1,1,1,0,0},{0,0,1,1,1,0,0}};
-	// 0 is out of bound, 1 is empty peg, 2 is a peg
+	static int World[][] = new int[7][7];
 	static int Size = World.length;
 	static int right = 4;
 	static int left = 1;
 	static int up = 2;
 	static int down = 3;
-	static int Start[] = {0,3};
-	static int SR = Start[0]; //starting row
-	static int SC = Start[1]; //starting column
+	static int GR = 3; //Goal row
+	static int GC = 3; //Goal column
 	static int Moves[][] = new int[4][Size*Size]; //store row, col, dir and possible moves, for each move, on every possible element
 	static int Count = 0; //count number of jumps
 	static int Solved = 1;//0 means solved +1 for each unsolved peg
-	static int BackCount = 0; //counts the number of backtracks
 	static int MaxCount = 0; //counts the highest value count reached
-	static int rc = 0;
-	static int dir = 1;
-	static int pos = 0;
-	static int restart = 0;
+	static long Jumps = 0;
+	static int depth = 0;
+	static ArrayList<Integer> hashtable = new ArrayList<Integer>();
+	
+	public static void readFile(String filename)
+	{
+		File file = new File(filename);
+		try
+		{
+			Scanner scanner = new Scanner(file);
+			while(scanner.hasNextLine())
+			{
+				for(int row=0; row<Size; row++)
+				{
+					for(int col=0; col<Size; col++)
+					{
+						World[row][col] = scanner.nextInt();
+					}
+				}
+				GR = scanner.nextInt();
+				GC = scanner.nextInt();
+			}
+			scanner.close();
+		}
+		catch(FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		//printGrid(World);
+		
+	}
+	
 	
 	public static void printGrid(int[][] World)
 	{//prints the grid in its current state and the Moves array to show which move was done from where
@@ -61,7 +90,7 @@ public class draft2
 	}
 	
 	public static int countPosMoves(int row, int col)
-	{//before a jump is made the number of possible moves from that position are counted, helps for backtracking
+	{//before a jump is made the number of possible moves from that position are counted, might be used for backtracking
 		int ret = 0;
 		if(col > 1)
 		{
@@ -97,6 +126,7 @@ public class draft2
 		
 	public static int jump(int row, int col, int dir)
 	{
+		int rc = 0;
 		if (World[row][col] == 2)// if the current element is a peg
 		{
 			if (dir == right)//peg was create by a right jump
@@ -192,7 +222,7 @@ public class draft2
 			if (Count > MaxCount)
 			{
 				MaxCount = Count;
-				System.out.format("Max Count = %d      backtrack = %d\n", MaxCount, BackCount);
+				System.out.format("Depth = %d  total jumps = %d\n", MaxCount, Jumps);
 			}
 		}
 		return(rc);
@@ -200,7 +230,6 @@ public class draft2
 	
 	public static void undo(int row, int col, int dir)
 	{
-		BackCount++;
 		if (dir == right)
 		{
 			World[row][col-1] = 1;
@@ -243,7 +272,7 @@ public class draft2
 		{
 			for (int col = 0; col < Size; col++)
 			{
-				if (row == SR && col == SC)
+				if (row == GR && col == GC)
 				{
 					if(World[row][col] != 1)
 					{
@@ -262,95 +291,166 @@ public class draft2
 		return(Solved);
 	}
 
-	public static void doNextJump(int row, int col)
-	{
-		rc = 0;
-		dir = 1;
-		pos = 0;
-		restart = 0;
-		while (row < Size && col < Size && Solved > 0)
+	public static int hash()
+	{//we divide the 7x7 grid into symmetries and sum them then multiply each by a different power of 10 to get a unique number
+	 //that is shared by all equivalent rotations. Board state of 0 is ignored(out of bounds), can't use negative though, that is reserved
+	 //for centre piece. Board state 1 adds 0 to the hash and board state 2 adds 1
+		int value = 0;
+		int temp = 0;
+		temp = (World[0][0] + World[0][6] + World[6][0] + World[6][6] - 4)*100000000;
+		if(temp > 0)
 		{
-			dir = 1;
-			pos = countPosMoves(row, col);
-			while(rc == 0 && dir < 5)
-			{
-				rc = jump(row, col, dir);
-				if (rc > 0)
-				{
-					Moves[3][Count-1] = pos; 
-				}
-				else
-				{
-					dir++;
-				}
-			}
-			col++;
-			if (col == Size)
-			{
-				col = 0;
-				row++;
-			}
+			value += temp; 
 		}
-		//printGrid(World);
-		Solved = check();
-		if (Solved > 0)
+		temp = (World[0][1] + World[0][5] + World[1][0] + World[1][6] + World[5][0] + World[5][6] + World[6][1] + World[6][5]- 8)*10000000;
+		if(temp > 0)
 		{
-			if(rc == 0 && row == Size)//no move was possible
+			value += temp; 
+		}
+		temp = (World[0][2] + World[0][4] + World[2][0] + World[2][6] + World[4][0] + World[4][6] + World[6][2] + World[6][4]- 8)*1000000;
+		if(temp > 0)
+		{
+			value += temp; 
+		}
+		temp = (World[0][3] + World[3][0] + World[3][6] + World[6][3] - 4)*100000;
+		if(temp > 0)
+		{
+			value += temp; 
+		}
+		temp = (World[1][1] + World[1][5] + World[5][1] + World[5][5] - 4)*10000;
+		if(temp > 0)
+		{
+			value += temp; 
+		}
+		temp = (World[1][2] + World[1][4] + World[2][1] + World[2][5] + World[4][1] + World[4][5] + World[5][2] + World[5][4]- 8)*1000;
+		if(temp > 0)
+		{
+			value += temp; 
+		}
+		temp = (World[1][3] + World[3][1] + World[3][5] + World[5][3] - 4)*100;
+		if(temp > 0)
+		{
+			value += temp; 
+		}
+		temp = (World[2][2] + World[2][4] + World[4][2]	 + World[4][4] - 4)*10;
+		if(temp > 0)
+		{
+			value += temp; 
+		}
+		temp = (World[2][3] + World[3][2] + World[3][4] + World[4][3] - 4);
+		if(temp > 0)
+		{
+			value += temp; 
+		}
+
+		if(World[3][3] == 1)
+		{
+			value = value*-1; 
+		}
+		return(value);
+	}
+	public static void recursion()
+	{
+		//printGrid(World);
+		depth ++;
+		int hash = hash();
+		//System.out.format("current hash:%d\n", hash);
+		int rc = 0;
+		int dir = 1;
+		int pos = 0;
+		int check = hashtable.lastIndexOf(hash);//looks for the key, returns the position or -1 if it's not found
+		//System.out.format("Check =%d\n", check);
+		if(check == -1)
+		{
+			for (int row=0; row<Size; row++)
 			{
-				pos = Moves[3][Count-1];
-				while(pos < 2 || rc == 0)
-				{//backtrack till move is found that had more than 1 possibility
-					row = Moves[0][Count-1];
-					col = Moves[1][Count-1];
-					dir = Moves[2][Count-1];
-					pos = Moves[3][Count-1];
-					undo(row, col, dir);
-					//printGrid(World);
-					if(pos > 1)
+				for (int col=0;col<Size; col++)
+				{
+					dir = 1;
+					pos = countPosMoves(row, col);
+					while(dir < 5)
 					{
-						rc = 0;
-						while(rc == 0 && dir < 5)
+						rc = jump(row, col, dir);
+						if(rc == 0)
 						{
 							dir++;
-							rc = jump(row, col, dir);
 						}
-						if(rc == 0)
-						{//no possible move so undo current move
-							row = Moves[0][Count-1];
-							col = Moves[1][Count-1];
-							dir = Moves[2][Count-1];
-							pos = Moves[3][Count-1];
-							undo(row, col, dir);
-							//printGrid(World);
-							if(col < Size-1)
+						if(rc > 0)
+						{
+							Moves[3][Count-1] = pos;
+							Jumps++;
+							if((Jumps % 1000000) == 0)
 							{
-								restart = 1;
-								doNextJump(row, col+1);
+								System.out.format("%d %d %d\n",Jumps, depth, MaxCount);
+								//printGrid(World);
 							}
-							else
-							if(row < Size-1)
+							recursion();
+							Solved = check();
+							if(Solved > 0)
 							{
-								restart = 1;
-								doNextJump(row+1, 0);
+								hashtable.add(hash());//before we undo the move we add the board state to the hashtable so we don't check it again
+								undo(Moves[0][Count-1], Moves[1][Count-1], Moves[2][Count-1]);
+								//printGrid(World);
+								dir++;
 							}
 						}
 					}
 				}
 			}
-			if(restart == 0)
+		}
+		depth --;
+	}
+	
+	public static void printSolution()
+	{
+		int row = 0;
+		int col = 0;
+		for(int i=0; i<Count; i++)
+		{
+			if(Moves[2][i] == 1)
 			{
-				doNextJump(0,0);
+				row = Moves[0][i];
+				col = Moves[1][i]+2;
 			}
+			else
+			if(Moves[2][i] == 2)
+			{
+				row = Moves[0][i]+2;
+				col = Moves[1][i];
+			}
+			else
+			if(Moves[2][i] == 3)
+			{
+				row = Moves[0][i]-2;
+				col = Moves[1][i];
+			}
+			else
+			if(Moves[2][i] == 4)
+			{
+				row = Moves[0][i];
+				col = Moves[1][i]-2;
+			}
+			System.out.format("Jump from %d,%d to %d,%d\n", row, col, Moves[0][i], Moves[1][i]);
+			//printGrid(World);
 		}
 	}
 	
 	public static void main(String args[])
 	{
-		World[SR][SC] = 2;
-		doNextJump(0,0);
+		Timer myTimer=new Timer();
+		myTimer.start();
+		String file = "src/1.txt";
+		readFile(file);
+		recursion();
+		myTimer.stop();
 		if(Solved == 0)
 		{
-			System.out.format("The problem was solved in %d moves after %d backtracks", Count, BackCount);
+			System.out.format("The problem was solved in %d moves after %d jumps in %dms\n", Count, Jumps, myTimer.getTime());
+			printSolution();
+		}
+		else
+		{
+			System.out.format("Couldn't find a solution after %d jumps\n", Jumps);
 		}
 		
 	}
