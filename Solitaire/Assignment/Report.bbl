@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{durango}
+Durango Bill.
+\newblock {Durango Bill's 33 Hole Peg Solitaire}.
+\newblock \url{http://www.durangobill.com/Peg33.html}.
+\newblock [Online; Accessed October 2017].
+
+\bibitem{Tomomi}
+Masashi Kiyomi and Tomomi Matsui.
+\newblock Integer programming based algorithms for peg solitaire problems.
+\newblock In {\em International Conference on Computers and Games}, pages
+  229--240. Springer, 2000.
+
+\end{thebibliography}
