@@ -9,7 +9,7 @@ on Peg Solitaire}
 \date{2017}
 \author{Lindiwe Mncwabe - 1118055\\\\Clifford Ralikhwatha - 0412610\\\\Thomas Johannsen - 721988\\\\\\\\}
 
-\usepackage[margin=1.5in]{geometry}
+\usepackage[margin=1.2in]{geometry}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \hypersetup
@@ -49,7 +49,7 @@ The exact number of different sequences for the game is $5*10^{20}$~\cite{durang
 All solutions use exactly 31 moves, by the design of the game a move removes a peg, so no solution is better or worse than any other.
 
 \subsubsection*{Recursion}
-The first thing you always learn about recursion is that you shouldn't use it unless you know what you are doing. The idea is that the recursive functions at some point calls itself, this can very easily result in an infinite loop. The reason we can use it for this problem is that we can control the recursion, at each step we remove a peg, this means that after 31 recursions we only have 1 peg left, at which point the game is over. We can never get to a depth of greater than the original number of pegs we started with. 
+Recursion can be a risky concept to implement, the idea is that the functions at some point calls itself, this can very easily result in an infinite loop. The reason we can use it for this problem is that we can control the recursion. On each call of the function we remove a peg, that means that we cannot call the function more often than we have pegs. We only add pegs back onto the board when we step out of a function and return to a shallower depth of recursion.
 \end{figure}
 \begin{figure}
 
@@ -59,19 +59,19 @@ Applied to peg solitaire; once we reach a board state that isn't the final solut
 \subsection{Design}
 To begin we need to represent the board somehow. There are many way to do this, but we decided to store it as a 7x7 matrix, where a 0 represents out of bounds, 2 is a peg and 1 is a hole. It turns out that 1 and 2 are interchangeable because the reverse of the solution would be building the board from just 1 peg to a full board with a single hole in the middle. Well that is the exact same problem with the definition of 1 and 2 swapped. We set 1 and 2 as defined so that the final board state has a hash value of 0.
 A sequence is considered a dead end, if we cannot perform any further moves and the board is not solved. Any solution we find is accepted, there is no need to find further solutions, as every solution has the same length.\\\newline
-\includegraphics[width=5cm]{2}
-\caption{Matrix representation of the solved board} 
+\includegraphics[width=15cm]{6}
+\caption{Matrix of the solved board and flowchart of the pseudo code}
 \label{fig:2}
 \color{white} blank line\\
 \color{black}
-The algorithm runs through the matrix trying on every element to perform a jump, in the order left, up, down, right and then storing that move in a separate array. The recursion is then called and the algorithm scans for the next possible jump. Once it has been determined that the sequence is a dead end, the board state is saved to the hash table and we backtrack one step to a shallower recursion level. Here we try to jump from the same position, but into a different direction, if possible, otherwise we scan for the next element on which we can perform a jump/.
+The algorithm runs through the matrix trying on every element to perform a jump, in the order left, up, down, right and then storing that move in a separate array. The function is then called again and the algorithm scans for the next possible jump. Once it has been determined that the sequence is a dead end, the board state is saved to the hash table and we backtrack one step to a shallower recursion level. Here we try to jump from the same position, but into a different direction, if possible, otherwise we scan for the next element on which we can perform a jump.
 \end{figure}
 \newpage
 \begin{figure}
 \subsubsection*{Proof of Correctness}
 The algorithm is a depth first recursive algorithm, with backtracking. To speed up the process we prune dead branches. By the nature of it being depth first it will scan every possible move. This guarantees that we find a solution, if the board is solvable. We can be sure that the pruning doesn't skip any untested moves, as it only stored boards that have been exhausted. 
-If we look at figure 3, we search to the left of the root node, till we can't any more. We get to (1), this isn't the solution, so we save the current board state to the hash table and backtrack and then continue to (2). This is also not the solution, so we save the hash and backtrack, repeating the procedure till (3) has been backtracked and hashed.
-When we get to (4) we see that it has the same hash value as (3), this means that it is a\\ rotation of a dead end board, so we can completely skip this branch and backtrack a step.
+If we look at figure 3, we search to the left of the root node, till we can't any more. We get to (5), this isn't the solution, so we save the current board state to the hash table and backtrack to (4), proceeding in a different direction than we took to (5), this leads to (7). This is also not the solution, so we save the hash and backtrack, repeating the procedure till we return to (4), which has not been exhausted and is therefore hashed. 
+Backtracking further to (3), we try a direction that didn't lead to (4), but when we check the hash value of the board at (8) we see that it is the same as at (4), so we skip the entire branch, as it can't be solved. We try a different direction from (3), or backtrack to (2).
 \newline\\
 \includegraphics[width=5cm]{3}
 \caption{Depth First Search} 
@@ -89,6 +89,8 @@ Both of these methods seemed a bit cumbersome so we came up with design 2 instea
 Instead of using 49 unique values we mapped and colour coded the symmetries of the board. Each element has 4 or 8 equivalent positions, we sum these positions and multiply each by a different power of 10, to obtain a value that is unique to that board state and its congruent siblings.\\
 Figure 3 shows the design of the hash map we ended up using. The central piece is the only one with no symmetries, so we store it as a boolean, by making the hash positive or negative depending on whether it has a peg or not.
 \newline
+\color{white} blank line\\
+\color{black}
 \includegraphics[width=\textwidth]{4}
 \caption{Colour coded hash map} 
 \label{fig: 3}
@@ -122,37 +124,44 @@ As we will show, there are three important details to be considered for a run ti
 \item The number of out of bounds fields
 \end{itemize}
 Unfortunately we can't directly compare all of these, as not all designs are solvable. This means that an unsolvable board with the same amount of pegs as a solvable board will result in many many more jumps, because the algorithm only ends once every branch has been exhausted.\newline
-We designed some different shapes, with different number of starting pegs, ran them, and plotted the outcome.
+We designed some different shapes, with different number of starting pegs, ran them, and plotted the outcome.\\
+\color{white} blank line\\
+\color{black}
 \includegraphics[width=12cm]{5}
 \caption{Different Starting Boards} 
 \label{fig: 5}
 The hash table made no difference at all for small boards, cross and plus cross, on the number of jumps or the run time.\\
-For all bigger boards it's not even worth running without the hash table, they takes minutes of hours to solve.\\
+For all bigger boards it's not even worth running without the hash table, they takes minutes or hours to solve.\\
 \end{figure}
 \newpage
 
 \begin{figure}
 Figure 6 shows the number of pegs plotted against the number of jumps and the run time till the solution is found or all moves have been tried.\newline
 \newline
-\includegraphics[width=12cm]{6}
+\includegraphics[width=15cm]{7}
 \caption{Graph of results} 
 \label{fig: 6}
 
-\subsubsection{Interpretation}
-The first thing that should be noted is that the 40 peg board is the only one that wasn't solved, in the graph. Therefore we would expect it to take longer, as all moves were tried. However when we forced a similar situation on the smaller boards, by setting an unreachable goal for each. We found that they had very similar results to their original ones, barely noticeable on the graph. Which is why we decided included 40 in the graph, chances are if a board of 40 were solvable it wouldn't be much faster then the unsolvable one. 
-The graphs takes the form of en exponential curve, which we would expect, as added a peg not only increases the length of the sequence, it also adds more possible moves to consider at each level.
-Interestingly we notice two points that don't lie on the curve, those are at 29/32 and 16/17. We can't be sure if the first value is high or the second value is low. If we look at figure 5, we see that 16 pegs is the triangle, which has 12 possible first moves, 17 pegs is the arrow, which only has 8 starting moves. The arrow also has 2 groups of pegs joined by a single line. From the start and due to the shape, the triangle has more possible moves than the arrow at every step.\newline
- If we look at the next disturbance, we have 29 pegs, the star, and 32, the classic board. The star, even though it uses less pegs, has a bigger playable board. The standard has 16 elements out of bounds and 33 playable fields, while the star has 12 out of bounds and 37 playable elements. This results in the star being the more complex puzzle, as at any given stage there are more possible jumps to consider, due to the extra playable fields. Also from the start there are 4 possible jump for the classic, while the star has 8 jumps.\\
+\subsection{Interpretation}
+The first thing that should be noted about the graph is that the 40+ peg boards were not solvable. This means that the algorithm terminates sooner on all other boards, as it just finds the first solution, opposed to running to conclusion which is the case for the 40+ peg boards.\\
+We feared this might skew the graph a bit, and we considered leaving out the 40+ peg boards from it. But first we decided to investigate on the magnitude of the difference between finding the first solution and running to conclusion. We reran the smaller boards with unreachable goal states, to force the algorithm to exhaust every possible sequence, the runtime difference was so minute that it wouldn't even show on the graph. This is because of the total amount of possible sequences only a tiny fraction are solutions, by the time a solution has been found the majority of sequences have been check, so checking the remaining few after the initial solution is relatively quick. Keep in mind that we don't need to check all possible sequences, as the hash table eliminates rotations, greatly reducing the total possible sequences.\\
+The exponential nature of the graph is clear, bigger boards have longer sequences and also have more possible jumps at each step to be considered, and therefore take longer to solve.\\
+If we look at the zoomed in part of the graph we notice two points that don't lie on the curve, those are at 16/17 and 29/32.\\
+If we look back to figure 5, we see that 16 pegs is the triangle, which has 12 possible first moves, 17 pegs is the arrow, which only has 8 starting moves. The arrow also has 2 groups of pegs joined by a single line. Even though the triangle has less pegs it has more possible jumps to consider at every step.\newline
+If we look at the next disturbance, we have 29 pegs, the star, and 32, the classic board. The star has a bigger playable board, because the standard board has 16 elements out of bounds and 33 playable fields, while the star has 12 out of bounds and 37 playable elements. This results in the star being the more complex puzzle, as at any given stage there are more possible jumps to consider.\\
 \end{figure}
 \newpage
 \begin{figure}
 For 25 pegs we found two separate solvable boards, the spiral and the square. Their run time is almost identical, as the jumps to completion differs by about 200 (35540 and 35332). This surprised us, as the square has 12 out of bounds compared to the 16 of the spiral, so we expected the square to take longer. Although if we count the possible starting moves the square has 12 to the 16 of the spiral. The two differences counteract each other and almost perfectly cancel out in this case
 \newline.
-The trend is clear though that as the number of pegs increase the solution takes exponentially longer to find, with the shape causing some variance from the trend.
+\newline
+The trend is clear though that as the number of pegs increase the solution takes exponentially longer to find, with the shape causing some minor variance from the trend.
 
 \section{Conclusion}
+With a problem of this nature it is hard to predict how well an algorithm will perform. From our empirical data we can see that the trend of the graph is exponential, which is what we expected. It is quite remarkable what an improvement the hash table made.
 
 \end{figure}
+
 \newpage
 \begin{figure}
 

@@ -417,14 +417,14 @@ public class pegSolitaire
 	{
 		Timer myTimer=new Timer();
 		myTimer.start();
-		String file = "src/6.txt";
+		String file = "src/1.txt"; // 1-10.txt have different boards
 		readFile(file);
 		solve();
 		myTimer.stop();
 		if(Solved == true)
 		{
 			System.out.format("The problem was solved in %d moves after %d jumps in %dms\n", Count, Jumps, myTimer.getTime());
-			//printSolution();
+			printSolution();
 		}
 		else
 		{
