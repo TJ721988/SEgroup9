@@ -37,7 +37,7 @@ The aim was to write an algorithm using Java, that would solve the classic peg\\
 
 \begin{figure}
 \section{Peg Solitaire}
-Peg solitaire is a very old single player game, that is played on a board of 33 holes in a cross formation. The aim is to jump pegs/marbles/stones over each other, removing one in the process, until just a single peg is left in the centre of the board. Different variations exist, some that use more than the standard 33 pegs, others that use less.\\
+Peg solitaire is a very old single player game, that is played on a board of 33 holes in a cross formation. The aim is to jump pegs/marbles/stones over each other, removing one in the process, until just a single peg is left in the centre of the board.A configuration is a board with some subset of it's holes filled.A board with U holes has two to the power U possible configurations .A player transforms a board's configuration into another via jumps.  Different variations exist, some that use more than the standard 33 pegs, others that use less.A jump on the board is valid if the jump(north,east,south,west)involves three consecutive holes with the first and the second hole filled and the third hole empty.\\
 Figure 1 shows an example of a valid move.\\\\
 \begin{center}
 \includegraphics[width=5cm]{1}
@@ -128,7 +128,7 @@ As we will show, there are three important details to be considered for a run ti
 \item The shape in which the pegs are set up
 \item The number of out of bounds fields
 \end{itemize}
-Unfortunately we can't directly compare all of these, as not all designs are solvable. This means that an unsolvable board with the same amount of pegs as a solvable board will result in many many more jumps, because the algorithm only ends once every branch has been exhausted.(Do i keep this in? we later disprove it?)\newline
+Unfortunately we can't directly compare all of these, as not all designs are solvable. This means that an unsolvable board with the same amount of pegs as a solvable board will result in many many more jumps, because the algorithm only ends once every branch has been exhausted.\newline
 We designed some different shapes, with different number of starting pegs, ran them, and plotted the outcome.\\
 \color{white} blank line\\
 \color{black}
@@ -165,7 +165,17 @@ For 25 pegs we found two separate solvable boards, the spiral and the square. Th
 The trend is clear though that as the number of pegs increase the solution takes exponentially longer to find, with the shape causing some minor variance from the trend.
 
 \section{Conclusion}
-With a problem of this nature it is hard to predict how well an algorithm will perform. From our empirical data we can see that the trend of the graph is exponential, which is what we expected. It is quite remarkable what an improvement the hash table made.
+With a problem of this nature it is hard to predict how well an algorithm will perform.The problem of solving an arbitrary peg solitaire board is known to be NP-complete(non deterministic polynomial time).\\
+
+Without the hashing the backtracking algorithm unfortunately has an exceptionally long run time.It was far too slow.This is mainly because of many possible choices one makes at every step and the consequence of backtracking of revisting boards that have already been checked multiple times.It's less efficient to use symmetry.\\
+
+Using a hash table we avoid repetition and solving backwards and forwards.This reduced the run time,it showed incredible improvements.\\
+
+For small boards,the hash table made no difference,the run time was so minute.For bigger boards it takes longer to solve.This is due to having more possible jumps considered.Different board shapes caused minor variance,with each shape having different number of pegs.\\
+
+
+From our empirical data we can see that the trend of the graph is exponential, which is what we expected based on our theoretical analysis.So the empirical analysis is in line with the theoretical analysis.\\
+It is quite remarkable what an improvement the hash table made.
 
 \end{figure}
 
